@@ -1,10 +1,10 @@
 /**
  * This file adds some LIVE to the Theme Customizer live preview. To leverage
  * this, set your custom settings to 'postMessage' and then add your handling
- * here. Your javascript should grab settings from customizer controls, and 
+ * here. Your javascript should grab settings from customizer controls, and
  * then make any necessary changes to the page using jQuery.
  */
- 
+
 ( function( $ ) {
 
 	// Site Name
@@ -21,29 +21,6 @@
 		} );
 	} );
 
-	// Dark Mode
-	wp.customize( 'hamilton_dark_mode', function( value ) {
-		value.bind( function( newval ) {
-			if ( newval == true ) {
-				$( 'body' ).addClass( 'dark-mode' );
-			} else {
-				$( 'body' ).removeClass( 'dark-mode' );
-			}
-		} );
-	} );
-	
-	// Alt Nav
-	wp.customize( 'hamilton_alt_nav', function( value ) {
-		value.bind( function( newval ) {
-			console.log( newval );
-			if ( newval == true ) {
-				$( 'body' ).addClass( 'show-alt-nav' );
-			} else {
-				$( 'body' ).removeClass( 'show-alt-nav' );
-			}
-		} );
-	} );
-	
 	// Three grid columns
 	wp.customize( 'hamilton_max_columns', function( value ) {
 		value.bind( function( newval ) {
@@ -61,7 +38,7 @@
 			} );
 		} );
 	} );
-	
+
 	// Show preview titles
 	wp.customize( 'hamilton_show_titles', function( value ) {
 		value.bind( function( newval ) {
@@ -72,5 +49,5 @@
 			}
 		} );
 	} );
-	
+
 } )( jQuery );

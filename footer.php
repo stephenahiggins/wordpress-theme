@@ -2,8 +2,7 @@
 
 		<footer class="site-footer section-inner">
 
-			<p>&copy; <?php echo date( 'Y' ); ?> <a href="<?php echo esc_url( home_url() ); ?>" class="site-name"><?php bloginfo( 'name' ); ?></a></p>
-			<p class="theme-by"><?php _e( 'Theme by Stephen Higgins, inspired by the Hamilton theme by', 'hamilton' ); ?> <a href="https://andersnoren.se">Anders Nor&eacute;n</a></p>
+			<p>&copy; <?php echo date( 'Y' ); ?> <a href="mailto:stephenahiggins@icloud.com" class="site-name"><?php bloginfo( 'name' ); ?></a></p>
 
 		</footer><!-- footer -->
 

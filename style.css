@@ -25,6 +25,7 @@
 	3.  Structure
 	4.	Site Header
 	5.	Site Navigation
+	5.1 Contact
 	6.	Base Content
 	7.  Singular
 	8.	Blocks
@@ -267,7 +268,10 @@ h2 {
 	font-weight: 300;
 }
 
-h3 { font-size: 28px; }
+h3 {
+	font-size: 28px;
+	font-weight: 100;
+}
 h4 { font-size: 24px; }
 h5 {
 	font-size: 20px;
@@ -545,10 +549,54 @@ main {
 
 #site-content {
 	padding-top: 30px;
+	padding-left: 20px;
 }
 
 .intro-text {
-	padding-left: 20px;
+	font-size: 20px;
+}
+
+.intro-text p {
+	line-height: 1.8;
+	margin-bottom: 10px;
+}
+
+.intro-text li {
+	font-size: 18px;
+	line-height: 1.2;
+	margin: 0.4em 0;
+}
+
+.intro-text-logo-wrapper {
+    display: flex;
+    justify-content: center;
+	align-items: center;
+    width: 100%;
+    padding: 10px 20px 0px 10px;
+	flex-wrap: wrap;
+}
+
+.intro-text-logo {
+	max-width: 150px;
+    height: auto;
+    flex: 1;
+	margin: 15px 23px;
+}
+
+img#logo-nhs{
+	max-width: 120px
+}
+
+img#logo-dfe {
+	max-width: 100px
+}
+
+img#logo-arbor {
+	max-width: 100px
+}
+
+img#logo-street-score {
+	max-width: 170px
 }
 
 .section-inner {
@@ -560,34 +608,7 @@ main {
 	height: 100%
 }
 
-/* Arrow and pointers */
-/* This "wrapper" literally only exists as an anchor */
-#header-pointer-wrapper{
-	position: absolute;
-    top: -29px;
-    right: 0px;
-    height: 200px;
-    width: 200px;
-}
 
-#header-pointer-arrow {
-	position: relative;
-    top: 139px;
-    width: 100px;
-    right: -16px;
-    rotate: 8deg;
-	fill: #EFF0F4;
-}
-
-#header-pointer-wrapper-text {
-    font-size: 24px;
-    letter-spacing: -0.8px;
-    font-family: "Caveat", cursive;
-    color: #EFF0F4;
-    position: relative;
-	right: 46px;
-    top: 104px;
-}
 /* .section-inner.medium { max-width: 840px; } */
 /* .section-inner.thin { max-width: 1000px; } */
 
@@ -626,9 +647,12 @@ a {
     padding: 30px 0;
     position: relative;
     width: 100%;
-    background-color: #283A6A;
-    padding-left: 50px;
+    background-color: #000026;
+    /* padding-left: 50px; */
 	display: flex;
+	background-image: url('assets/img/header.jpg');
+	background-repeat: no-repeat;
+	background-size: 100%;
 }
 
 .header-intro-wrapper {
@@ -637,6 +661,7 @@ a {
 }
 
 .header-intro-wrapper-left {
+	position: relative;
 	width: 100%;
 	max-width: 130px;
 }
@@ -645,7 +670,8 @@ a {
 	flex-grow: 1;
 	display: flex;
 	flex-direction: column;
-	padding-left: 15px
+	padding-left: 64px;
+	justify-content: center;
 }
 
 .header-intro-wrapper-right-top-row .header-intro-wrapper-right-bottom-row {
@@ -656,7 +682,12 @@ a {
 }
 
 .header-intro-wrapper-right-bottom-row {
-	margin-left: 15px;
+	margin-left: 9px;
+}
+
+#site-header-intro-text {
+	font-family: "Caveat", cursive;
+	font-size: 30px;
 }
 
 .wp-custom-logo .site-header {
@@ -692,7 +723,7 @@ a {
 	display: block;
 	/* max-width: 130px; */
 	overflow: hidden;
-	width: 157px;
+	width: 200px;
 	padding-right: 20px;
 }
 
@@ -705,9 +736,8 @@ a {
     background-color: transparent;
     cursor: pointer;
     height: 30px;
-    padding: 0;
-    position: absolute;
-    right: 70px;
+    position: relative;
+    right: 0px;
     top: calc(50% - 7px);
 }
 
@@ -737,23 +767,22 @@ a {
 	z-index: 1;
 }
 
+.dark-mode .nav-toggle .bar {
+	background-color: #EFF0F4;
+}
+
 .menu-wrapper {
     width: 300px;
     display: inline-block;
     background-color: #fff;
     padding: 15px 34px;
     position: relative;
-    right: 39px;
 	border-bottom: 1px solid #162648; /* Thin blue border at the bottom */
-	top: 5px;
+	right: 18px; /* Right has to be set here, "top" is set in .site-nav */
 }
 
 .customizer-preview .nav-toggle .bar {
 	transition: background-color .2s ease-in-out;
-}
-
-.dark-mode .nav-toggle .bar {
-	background-color: rgba( 255, 255, 255, 1 );
 }
 
 .nav-toggle .bar:nth-child(1) { margin-top: -10px; }
@@ -783,32 +812,33 @@ a {
 /*	5.	Site Navigation
 /* -------------------------------------------------------------------------------- */
 
-
-.site-nav {
-	opacity: 0;
-	overflow: auto;
-	margin: 122px 30px 0;
-	position: fixed;
-		bottom: 0;
-		left: -99999px;
-		right: 99999px;
-		top: 0;
-	transform: translateY( 1rem );
-	transition: opacity .3s ease-in-out, transform .3s ease-in-out, left 0s .3s, right 0s .3s;
-	text-align: right;
+#nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-.dark-mode .site-nav {
-	background: #1d1d1d;
+#nav-wrapper {
+	width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: end;
+}
+
+.site-nav {
+    position: absolute;
+    opacity: 0;
+    overflow: auto;
+    transform: translateY(1rem);
+    transition: opacity .3s ease-in-out, transform .3s ease-in-out;
+    text-align: right;
+    z-index: 99; /* Ensures it's above other content */
+	top: 165px; /* Top has to be set here, "right" is set in 'menu-wrapper */
 }
 
 .site-nav.active {
-	left: 0;
-	right: 0;
-	opacity: 1;
-	transform: translateY( 0 );
-	transition: opacity .3s ease-in-out, transform .3s ease-in-out;
-	z-index: 99;
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .site-nav ul {
@@ -856,6 +886,35 @@ a {
 	color: rgba( 0, 0, 0, .55 );
 }
 
+/* Arrow and pointers */
+/* This "wrapper" literally only exists as an anchor */
+
+.header-pointer-wrapper {
+    position: absolute;
+    text-align: right;
+    z-index: 99;
+	top: 185px;
+}
+
+#header-pointer-arrow {
+    position: relative;
+    top: -48px;
+    right: 62px;
+    width: 100px;
+    rotate: 8deg;
+    fill: #EFF0F4;
+}
+
+#header-pointer-wrapper-text {
+    font-size: 24px;
+    letter-spacing: -0.8px;
+    font-family: "Caveat", cursive;
+    color: #EFF0F4;
+    position: relative;
+	right: 148px;
+    top: -83px;
+}
+
 .dark-mode .site-nav ul + ul a {
 	color: rgba( 255, 255, 255, .55 );
 }
@@ -872,7 +931,7 @@ a {
 
 .site-nav ul:last-child a:hover,
 .site-nav ul:last-child .current-menu-item > a {
-	border-bottom-color: rgba( 0, 0, 0, .55 );
+	border-bottom-color: rgba(255, 255, 255, 0.55);
 }
 
 .dark-mode .site-nav ul:last-child a:hover,
@@ -1081,6 +1140,38 @@ a {
 	top: -8px;
 }
 
+/* -------------------------------------------------------------------------------- */
+/*	5.1.	Contact
+/* -------------------------------------------------------------------------------- */
+
+.contact-section {
+    text-align: center;
+    padding: 20px;
+}
+
+.contact-icons {
+    margin-top: 20px;
+}
+
+.contact-icon {
+    margin: 10px;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+    border-radius: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.contact-icon:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+.contact-icon i {
+    margin-right: 8px;
+    font-size: 24px;
+}
+
 
 /* -------------------------------------------------------------------------------- */
 /*	6.	Archive
@@ -1098,7 +1189,7 @@ a {
 	padding: 10px;
 	transition: none;
 	width: 50%;
-	padding: 30px 0px 0px 30px;
+	padding: 10px 0px 0px 10px;
 }
 
 .no-js .posts .post-preview {
@@ -1357,7 +1448,7 @@ a {
 }
 
 .meta.bottom p {
-	line-height: 1.5;
+	line-height: 1;
 	margin: 0;
 }
 
@@ -2422,6 +2513,13 @@ p.has-drop-cap:not(:focus):first-letter {
 
 }
 
+/* Override to pove the pointer when the header starts bunching up */
+@media ( max-width: 788px ) {
+	.header-pointer-wrapper {
+		top: 220px;
+	}
+
+}
 
 /* 750 PX */
 
@@ -2438,10 +2536,13 @@ p.has-drop-cap:not(:focus):first-letter {
 		margin: 40px 0 0;
 	}
 
-	#header-pointer-wrapper {
+	.header-pointer-wrapper {
 		display: none;
 	}
 
+	.header-intro-wrapper-right-bottom-row {
+		margin-left: 0px;
+	}
 
 	/* Entry Content ----------------------------- */
 
@@ -2539,7 +2640,7 @@ p.has-drop-cap:not(:focus):first-letter {
 		padding: 35px 0;
 	}
 
-	#header-pointer-wrapper {
+	.header-pointer-wrapper {
 		display: none;
 	}
 
