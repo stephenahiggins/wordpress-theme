@@ -687,7 +687,7 @@ a {
 
 #site-header-intro-text {
 	font-family: "Caveat", cursive;
-	font-size: 30px;
+	font-size: 1.5em;
 }
 
 .wp-custom-logo .site-header {
@@ -695,7 +695,7 @@ a {
 }
 
 .site-header .site-title {
-    font-size: 82px;
+	font-size: 5.5em;
     margin: 0;
     font-weight: 400;
     font-style: normal;
